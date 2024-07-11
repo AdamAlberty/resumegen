@@ -33,4 +33,5 @@ type ResumeData struct {
 	Certifications string           `json:"certifications"`
 	Skills         string           `json:"skills"`
 	Interests      string           `json:"interests"`
+	Languages      string           `json:"languages"`
 }

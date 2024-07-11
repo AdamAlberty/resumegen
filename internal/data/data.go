@@ -34,5 +34,6 @@ const ResumeSkeletonData = `{
   ],
   "skills": "",
   "certifications": "",
-  "interests": ""
+  "interests": "",
+  "languages": ""
 }`

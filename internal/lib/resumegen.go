@@ -32,13 +32,13 @@ func GenerateResumePDF(data *types.ResumeData, writer io.Writer) error {
 	// Personal info
 	pdf.SetTextColor(100, 99, 100)
 	pdf.SetFontSize(11)
-	personalInfo := data.PersonalInfo.Email + " | " + data.PersonalInfo.Location + " | " + data.PersonalInfo.Website + " | "
-	pdf.Text((width-pdf.GetStringWidth(personalInfo+"LinkedIn URL | GitHub URL"))/2, pdf.GetY()+8, personalInfo)
+	personalInfo := data.PersonalInfo.Email + " | " + data.PersonalInfo.Phone + " | " + data.PersonalInfo.Location + " | " + data.PersonalInfo.Website + " | "
+	pdf.Text((width-pdf.GetStringWidth(personalInfo+"Li | Gh"))/2, pdf.GetY()+8, personalInfo)
 
-	pdf.SetX((width-pdf.GetStringWidth(personalInfo+"LinkedIn URL | GitHub URL"))/2 + pdf.GetStringWidth(personalInfo))
+	pdf.SetX((width-pdf.GetStringWidth(personalInfo+"Li | Gh"))/2 + pdf.GetStringWidth(personalInfo))
 
-	pdf.CellFormat(pdf.GetStringWidth("LinkedIn URL | "), 13.4, "LinkedIn URL | ", "", 0, "L", false, 0, data.PersonalInfo.LinkedIn)
-	pdf.CellFormat(pdf.GetStringWidth("GitHub URL"), 13.4, "GitHub URL", "", 0, "L", false, 0, data.PersonalInfo.GitHub)
+	pdf.CellFormat(pdf.GetStringWidth("Li | "), 13.4, "Li | ", "", 0, "L", false, 0, data.PersonalInfo.LinkedIn)
+	pdf.CellFormat(pdf.GetStringWidth("Gh"), 13.4, "Gh", "", 0, "L", false, 0, data.PersonalInfo.GitHub)
 
 	pdf.SetY(pdf.GetY() + 20)
 	utils.SectionHeader(pdf, "WORK EXPERIENCE")
@@ -67,6 +67,7 @@ func GenerateResumePDF(data *types.ResumeData, writer io.Writer) error {
 	utils.ListSection(pdf, "Skills", data.Skills)
 	utils.ListSection(pdf, "Certifications", data.Certifications)
 	utils.ListSection(pdf, "Interests", data.Interests)
+	utils.ListSection(pdf, "Languages", data.Languages)
 
 	err := pdf.Output(writer)
 	return err
